@@ -8,6 +8,7 @@ namespace Trainline.CurrencyConverter.Api
     using Microsoft.OpenApi.Models;
     using Service;
     using Service.Interface;
+    using Trainline.CurrencyConverter.Service.Options;
 
     public class Startup
     {
@@ -29,8 +30,10 @@ namespace Trainline.CurrencyConverter.Api
             });
             services.AddHttpClient();
 
-            services.AddTransient(typeof(IExchangeRateService), typeof(ExchangeRateService));
-            services.AddTransient(typeof(ICurrencyConversionService), typeof(CurrencyConversionService));
+            services.Configure<ExchangeRatesServiceOptions>(Configuration.GetSection("ExchangeRatesServiceOptions"));
+
+            services.AddTransient<IExchangeRateService,ExchangeRateService>();
+            services.AddTransient<ICurrencyConversionService, CurrencyConversionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

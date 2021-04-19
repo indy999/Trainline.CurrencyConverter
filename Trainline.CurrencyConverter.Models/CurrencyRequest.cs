@@ -5,15 +5,15 @@ namespace Trainline.CurrencyConverter.Models
     public class CurrencyRequest
     {
         [Required]
-        [RegularExpression(@"^\d+\.?\d*$")]
+
         public decimal Amount { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{3,3}$")]
+        [RegularExpression(@"^[a-zA-Z]{3,3}$")]
         public string SourceCurrency { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{3,3}$")]
+        [RegularExpression(@"^[a-zA-Z]{3,3}$")]
         public string TargetCurrency { get; set; }
     }
 }

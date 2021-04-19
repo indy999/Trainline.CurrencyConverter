@@ -39,13 +39,13 @@ namespace Trainline.CurrencyConverter.IntegrationTests
         
         [Theory]
         [InlineData(5, null, null)]
-        [InlineData(-1.50, "gbr", "eur")]
         [InlineData(15.3, "gbrr", "eur2")]
         [InlineData(5, "gb", "eur")]
         [InlineData(5, "gbr", "e")]
         [InlineData(15, null, "eur")]
         [InlineData(15, "gbr", null)]
         [InlineData(15, "gbr", "e2w")]
+        [InlineData(15, "gbr-e", "e2w")]
         public async Task Return400OnInvalidCurrencyRequestInput(decimal amount, string sourceCurrency, string targetCurrency)
         {
             string request = CreateCurrencyConversionRequestUrl(amount, sourceCurrency, targetCurrency);
